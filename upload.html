@@ -17,10 +17,7 @@
     align-items: center;
     padding: 20px;
   }
-  .header {
-    text-align: center;
-    margin: 20px 0 30px;
-  }
+  .header { text-align: center; margin: 20px 0 30px; }
   .lion {
     width: 80px; height: 80px;
     border-radius: 50%;
@@ -31,18 +28,8 @@
     border: 3px solid rgba(255,216,74,0.5);
     box-shadow: 0 0 20px rgba(255,216,74,0.4);
   }
-  h1 {
-    color: #ffd84a;
-    font-size: 22px;
-    letter-spacing: 3px;
-    margin: 0 0 4px;
-    font-weight: 800;
-  }
-  .subtitle {
-    color: #888;
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
+  h1 { color: #ffd84a; font-size: 22px; letter-spacing: 3px; margin: 0 0 4px; font-weight: 800; }
+  .subtitle { color: #888; font-size: 11px; letter-spacing: 2px; }
   .status {
     background: rgba(255,216,74,0.08);
     border: 1.5px solid rgba(255,216,74,0.4);
@@ -60,82 +47,37 @@
   .status.connected { background: rgba(74,222,128,0.15); border-color: #4ade80; color: #4ade80; }
   .status.error { background: rgba(248,113,113,0.15); border-color: #f87171; color: #f87171; }
   .status.sending { background: rgba(96,165,250,0.15); border-color: #60a5fa; color: #60a5fa; }
-
+  .status.warning { background: rgba(251,191,36,0.15); border-color: #fbbf24; color: #fbbf24; }
   input[type="file"] { display: none; }
   .btn {
     background: linear-gradient(135deg, #ffd84a 0%, #ff8c00 100%);
-    color: #000;
-    padding: 22px 40px;
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(255,140,0,0.4);
-    transition: transform 0.15s;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-    max-width: 350px;
-    margin: 8px 0;
+    color: #000; padding: 22px 40px; font-size: 20px; font-weight: 800;
+    letter-spacing: 2px; border: none; border-radius: 16px;
+    cursor: pointer; box-shadow: 0 6px 20px rgba(255,140,0,0.4);
+    display: block; text-align: center; text-decoration: none;
+    width: 100%; max-width: 350px; margin: 8px 0;
   }
   .btn:active { transform: scale(0.96); }
   .btn-secondary {
-    background: rgba(255,255,255,0.08);
-    color: #fff;
-    border: 1.5px solid rgba(255,216,74,0.4);
-    font-size: 16px;
-    padding: 14px 24px;
+    background: rgba(255,255,255,0.08); color: #fff;
+    border: 1.5px solid rgba(255,216,74,0.4); font-size: 16px; padding: 14px 24px;
   }
-
-  .preview {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 350px;
-  }
+  .preview { margin-top: 20px; width: 100%; max-width: 350px; }
   .preview-card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    padding: 10px;
-    margin-bottom: 10px;
-    text-align: center;
+    background: rgba(255,255,255,0.05); border-radius: 12px;
+    padding: 10px; margin-bottom: 10px; text-align: center;
     border: 1px solid rgba(255,216,74,0.3);
   }
-  .preview-card img {
-    max-width: 100%;
-    max-height: 180px;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 8px;
+  .preview-card img { max-width: 100%; max-height: 180px; border-radius: 8px; display: block; margin: 0 auto 8px; }
+  .preview-card .lbl { font-size: 11px; color: #4ade80; font-weight: 700; }
+  .retry-btn {
+    margin-top: 8px; background: #c41e1e; color: #fff; border: none;
+    padding: 10px 24px; border-radius: 8px; font-weight: 700;
+    cursor: pointer; font-size: 13px; letter-spacing: 1px;
   }
-  .preview-card .lbl {
-    font-size: 11px;
-    color: #4ade80;
-    font-weight: 700;
-  }
-
   .footer {
-    margin-top: auto;
-    padding: 30px 0 10px;
-    text-align: center;
-    color: #555;
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-  .footer a { color: #ffd84a; text-decoration: none; }
-
-  .conn-id {
-    background: #000;
-    color: #ffd84a;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 12px;
-    margin: 10px 0;
-    word-break: break-all;
-    border: 1px solid #333;
+    margin-top: auto; padding: 30px 0 10px; text-align: center;
+    color: #555; font-size: 10px; letter-spacing: 1px;
   }
 </style>
 </head>
@@ -147,80 +89,137 @@
   <div class="subtitle">PHONE → SOFTWARE TRANSFER</div>
 </div>
 
-<div id="status" class="status">Connecting to PC...</div>
+<div id="status" class="status">Initializing...</div>
 
 <input type="file" id="filepick" accept="image/*">
-<label for="filepick" class="btn">📷 CHOOSE PHOTO</label>
+<label for="filepick" class="btn" id="pickBtn">📷 CHOOSE PHOTO</label>
 
 <input type="file" id="filecamera" accept="image/*" capture="environment">
-<label for="filecamera" class="btn btn-secondary">📸 TAKE PHOTO</label>
+<label for="filecamera" class="btn btn-secondary" id="cameraBtn">📸 TAKE PHOTO</label>
+
+<div id="retryWrap" style="display:none; text-align:center;">
+  <button class="retry-btn" onclick="location.reload()">🔄 RETRY CONNECTION</button>
+</div>
 
 <div class="preview" id="preview"></div>
 
-<div class="footer">
-  Deslo Centre · Sale Paper Maker<br>
-  © 2026 · Mr Shams
-</div>
+<div class="footer">Deslo Centre · Sale Paper Maker<br>© 2026 · Mr Shams</div>
 
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script>
 (function() {
-  const params = new URLSearchParams(location.search);
-  const pid = params.get('p') || params.get('id') || '';
-  const statusEl = document.getElementById('status');
-  const previewEl = document.getElementById('preview');
-  let conn = null;
-  let peer = null;
+  var params = new URLSearchParams(location.search);
+  var pid = params.get('p') || params.get('id') || '';
+  var statusEl = document.getElementById('status');
+  var previewEl = document.getElementById('preview');
+  var retryWrap = document.getElementById('retryWrap');
+  var conn = null, peer = null, connectTimer = null;
+  var connectAttempts = 0, maxAttempts = 3;
 
   function setStatus(msg, type) {
     statusEl.textContent = msg;
     statusEl.className = 'status' + (type ? ' ' + type : '');
   }
+  function showRetry() { retryWrap.style.display = 'block'; }
+  function hideRetry() { retryWrap.style.display = 'none'; }
 
   if (!pid) {
     setStatus('✗ No connection ID. Re-scan QR.', 'error');
+    showRetry();
     return;
   }
 
-  try {
-    peer = new Peer();
-    peer.on('open', function(myId) {
-      setStatus('Connecting to PC (' + pid.substr(0, 8) + '...)', '');
-      conn = peer.connect(pid, { reliable: true });
-      conn.on('open', function() {
-        setStatus('✓ Connected — ready to send!', 'connected');
+  // Multi-STUN/TURN config — works through firewalls, mobile data, restricted networks
+  var iceServers = [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' },
+    { urls: 'stun:stun2.l.google.com:19302' },
+    { urls: 'stun:stun3.l.google.com:19302' },
+    { urls: 'stun:stun4.l.google.com:19302' },
+    { urls: 'stun:global.stun.twilio.com:3478' },
+    { urls: 'stun:openrelay.metered.ca:80' },
+    { urls: 'turn:openrelay.metered.ca:80', username: 'openrelayproject', credential: 'openrelayproject' },
+    { urls: 'turn:openrelay.metered.ca:443', username: 'openrelayproject', credential: 'openrelayproject' },
+    { urls: 'turn:openrelay.metered.ca:443?transport=tcp', username: 'openrelayproject', credential: 'openrelayproject' }
+  ];
+
+  function attemptConnection() {
+    connectAttempts++;
+    setStatus('Connecting to PC... (try ' + connectAttempts + '/' + maxAttempts + ')', '');
+    hideRetry();
+    try {
+      peer = new Peer({ config: { iceServers: iceServers }, debug: 0 });
+      connectTimer = setTimeout(function() {
+        if (!conn || !conn.open) {
+          try { if (peer) peer.destroy(); } catch(e){}
+          if (connectAttempts < maxAttempts) {
+            setStatus('Retrying...', 'warning');
+            setTimeout(attemptConnection, 1000);
+          } else {
+            setStatus('✗ Cannot reach PC. Check PC software is open.', 'error');
+            showRetry();
+          }
+        }
+      }, 15000);
+      peer.on('open', function() {
+        setStatus('Reaching PC...', '');
+        conn = peer.connect(pid, { reliable: true, serialization: 'binary' });
+        conn.on('open', function() {
+          clearTimeout(connectTimer);
+          setStatus('✓ Connected — ready to send photos!', 'connected');
+          hideRetry();
+        });
+        conn.on('close', function() { setStatus('Disconnected. Tap retry.', 'warning'); showRetry(); });
+        conn.on('error', function(e) {
+          clearTimeout(connectTimer);
+          setStatus('✗ Error: ' + (e.message || e.type || 'unknown'), 'error');
+          showRetry();
+        });
       });
-      conn.on('close', function() {
-        setStatus('Connection closed. Re-scan QR.', 'error');
+      peer.on('error', function(e) {
+        clearTimeout(connectTimer);
+        var errType = e.type || '';
+        if (errType === 'peer-unavailable') {
+          setStatus('✗ PC offline. Refresh QR on PC.', 'error');
+          showRetry();
+        } else if (errType === 'network' || errType === 'disconnected' || errType === 'server-error') {
+          if (connectAttempts < maxAttempts) {
+            setStatus('Retrying network...', 'warning');
+            try { if (peer) peer.destroy(); } catch(e){}
+            setTimeout(attemptConnection, 1500);
+          } else {
+            setStatus('✗ Network blocked. Try WiFi.', 'error');
+            showRetry();
+          }
+        } else {
+          setStatus('✗ ' + (e.message || errType || 'failed'), 'error');
+          showRetry();
+        }
       });
-      conn.on('error', function(e) {
-        setStatus('✗ Error: ' + (e.message || e), 'error');
-      });
-    });
-    peer.on('error', function(e) {
-      setStatus('✗ ' + (e.type || e.message || 'Connection failed'), 'error');
-    });
-  } catch(e) {
-    setStatus('✗ ' + e.message, 'error');
+    } catch(e) {
+      setStatus('✗ Cannot start: ' + e.message, 'error');
+      showRetry();
+    }
   }
+
+  attemptConnection();
 
   function sendFile(file) {
     if (!conn || !conn.open) {
-      setStatus('Not connected yet, please wait...', 'error');
+      setStatus('Not connected yet, please wait...', 'warning');
       return;
     }
     setStatus('Reading photo...', 'sending');
-    const reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function() {
       setStatus('Sending photo...', 'sending');
       try {
         conn.send({ type: 'image', data: reader.result, name: file.name });
-        // preview
-        const card = document.createElement('div');
+        var card = document.createElement('div');
         card.className = 'preview-card';
-        const img = document.createElement('img');
+        var img = document.createElement('img');
         img.src = reader.result;
-        const lbl = document.createElement('div');
+        var lbl = document.createElement('div');
         lbl.className = 'lbl';
         lbl.textContent = '✓ Sent: ' + file.name;
         card.appendChild(img);
@@ -231,9 +230,7 @@
         setStatus('✗ Send failed: ' + e.message, 'error');
       }
     };
-    reader.onerror = function() {
-      setStatus('✗ Could not read photo', 'error');
-    };
+    reader.onerror = function() { setStatus('✗ Could not read photo', 'error'); };
     reader.readAsDataURL(file);
   }
 
